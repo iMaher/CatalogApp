@@ -30,6 +30,10 @@ session = DBSession()
 
 @app.route('/')
 @app.route('/catalog')
+"""homePage function to display the home page
+and display page bbased on user type """
+
+
 def homePage():
     categories = session.query(Categories).all()
     itemsList = session.query(CatalogItems).order_by(
@@ -47,6 +51,9 @@ def homePage():
 
 
 @app.route('/catalog/<string:catName>/items')
+""" catLit will display all the catalog stored in the database """
+
+
 def catList(catName):
     categories = session.query(Categories).all()
     catId = session.query(Categories).filter_by(name=catName).one()
@@ -60,6 +67,9 @@ def catList(catName):
 
 
 @app.route('/catalog/<string:catName>/<string:item>')
+"the item Desc is for display the description for each item"
+
+
 def itemDesc(catName, item):
     item = session.query(CatalogItems).filter_by(name=item).one()
     creator = getUserInfo(item.user_id)
@@ -82,6 +92,9 @@ def showLogin():
 
 
 @app.route('/catalog/addItem', methods=['GET', 'POST'])
+"""this function is to add item in each catalog by filling the required form"""
+
+
 def addItem():
     categories = session.query(Categories).all()
     if 'username' not in login_session:
@@ -101,6 +114,9 @@ def addItem():
 
 
 @app.route('/catalog/<string:item>/edit', methods=['GET', 'POST'])
+"""editItem will allow the item owner to modify the item data"""
+
+
 def editItem(item):
     categories = session.query(Categories).all()
     editItem = session.query(CatalogItems).filter_by(name=item).one()
@@ -137,6 +153,10 @@ def editItem(item):
 
 
 @app.route('/catalog/<string:item>/delete', methods=['GET', 'POST'])
+"""deleteItem will allow the item owner to delete
+the item data from the database"""
+
+
 def deleteItem(item):
     deleteItem = session.query(CatalogItems).filter_by(name=item).one()
     if 'username' not in login_session:
@@ -154,6 +174,9 @@ def deleteItem(item):
 
 
 @app.route('/catalog.json')
+"""JSON page with allow user to display the data as JSON format"""
+
+
 def JSONPage():
     categories = session.query(Categories).all()
     catJSON = [i.serialize for i in categories]
