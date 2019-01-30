@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+
+	<div class="row">
+		<div class="col-6 ">
+		<h1>Categories</h1>
+		{% for i in categories %}
+		<a href="{{url_for('catList',catName=i.name)}}" class="catbtn">{{i.name}}</a>
+		<br>
+		{% endfor %}
+	</div>
+	<div class="col-6">
+		<h2>latest Items</h2>
+		{% for j in itemsList %}
+		<a href="{{url_for('itemDesc',catName=j.categories.name, item=j.name)}}" class="catbtn">{{j.name}}</a> 
+		({{j.categories.name}})
+		<br>
+		{% endfor %}
+	</div>
+	</div>
+
+{%endblock%}

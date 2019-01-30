@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+
+	<h1>{{item.name}}</h1>
+	<br>
+	<div>
+		{{item.description}}
+	</div>
+	<br>
+	<a href="{{url_for('editItem', item = item.name )}}" class="btn btn-outline-info btn-sm">Edit</a>
+	<a href="{{url_for('deleteItem', item = item.name )}}" class="btn btn-outline-danger btn-sm">Delete</a>
+
+{%endblock%}

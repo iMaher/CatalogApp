@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+
+
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Item</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="{{url_for('editItem', item = item.name)}}" method = "POST">
+				<div class="form-group">
+					<label for="name">Title:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+					<br>
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description">{{item.description}}</textarea>
+					<br>
+					<label for="category">Category</label>
+					<select name="category">
+						{% for i in categories %}
+						<option value="{{i.name}}" {% if catName.name == i.name %} selected {%endif%}>
+							{{i.name}}							
+						</option>
+						{%endfor%}
+					</select>
+					<br>
+					<br>
+					<button type="submit" class="btn btn-outline-primary" id="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{%endblock%}

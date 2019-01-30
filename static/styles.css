@@ -1,0 +1,26 @@
+
+.header {
+	background: linear-gradient(to bottom right, #6600ff 0%, #9966ff 100%);
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.headerTitel{
+	color:white;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+
+.m {
+
+	 border: 2px solid black; 
+	 border-radius: 25px;
+	 padding: 20px;
+
+}
+
+.catbtn{
+	font-size: 20px;
+	color: #ff0066;
+}
